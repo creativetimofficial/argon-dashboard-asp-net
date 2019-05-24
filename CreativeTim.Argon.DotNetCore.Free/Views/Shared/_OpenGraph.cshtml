@@ -1,0 +1,15 @@
+﻿@using CreativeTim.Argon.DotNetCore.Free.Infrastructure.AppSettingsModels
+@using Microsoft.Extensions.Options
+
+@inject IOptions<ScriptTags> OptionsScriptTags
+<!-- Open Graph data -->
+@if (!string.IsNullOrWhiteSpace(OptionsScriptTags.Value?.FacebookOpenGraph))
+{
+    <meta property="fb:app_id" content="@OptionsScriptTags.Value.FacebookOpenGraph">
+}
+<meta property="og:title" content="Argon Dashboard Asp.net by Creative Tim" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.creative-tim.com/live/argon-dashboard-asp-net" />
+<meta property="og:image" content="https://s3.amazonaws.com/creativetim_bucket/products/162/opt_ad_asp_thumbnail.jpg" />
+<meta property="og:description" content="Start your development with a Bootstrap 4 Admin Dashboard built for Asp.net framework, the newest go-to technology for top companies.It features a huge number of components that can help you create amazing websites and brings with itself innumerable advantages: lightweight, fast, scalable and modern way to execute your next top app." />
+<meta property="og:site_name" content="Creative Tim" />

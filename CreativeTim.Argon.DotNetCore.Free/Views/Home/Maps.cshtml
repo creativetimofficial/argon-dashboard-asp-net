@@ -1,0 +1,22 @@
+﻿@using CreativeTim.Argon.DotNetCore.Free.Infrastructure.AppSettingsModels
+@using Microsoft.Extensions.Options
+
+@inject IOptions<ScriptTags> OptionsScriptTags
+
+@{
+    ViewData["Title"] = "Maps";
+}
+
+@section HeadScripts
+{
+    @* Get the Google Maps API key from the configuration object *@
+    <script src="https://maps.googleapis.com/maps/api/js?key=@OptionsScriptTags.Value?.GoogleMapsApiKey"></script>
+}
+
+<div class="row">
+    <div class="col">
+        <div class="card shadow border-0">
+            <div id="map-canvas" class="map-canvas" data-lat="40.748817" data-lng="-73.985428" style="height: 600px;"></div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,87 @@
+﻿@inject Microsoft.AspNetCore.Antiforgery.IAntiforgery Xsrf
+@functions{
+    public string GetAntiXsrfRequestToken()
+    {
+        return Xsrf.GetAndStoreTokens(Context).RequestToken;
+    }
+}
+
+<input type="hidden" id="RequestVerificationToken"
+       name="RequestVerificationToken" value="@GetAntiXsrfRequestToken()">
+
+<footer class="footer">
+    <div class="row align-items-center justify-content-xl-between">
+        <div class="col-xl-6">
+            <div class="copyright text-center text-xl-left text-muted">
+                &copy; 2019
+                <a href="https://www.creative-tim.com" class="font-weight-bold ml-1" target="_blank">Creative Tim</a>
+                &
+                <a href="https://udevoffice.com/" class="font-weight-bold ml-1" target="_blank">Udevoffice</a>
+            </div>
+        </div>
+        <div class="col-xl-6">
+            <ul class="nav nav-footer justify-content-center justify-content-xl-end">
+                <li class="nav-item">
+                    <a href="https://www.creative-tim.com" class="nav-link" target="_blank">Creative Tim</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://udevoffice.com/" class="nav-link" target="_blank">Udevoffice</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://www.creative-tim.com/presentation" class="nav-link" target="_blank">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a href="http://blog.creative-tim.com" class="nav-link" target="_blank">Blog</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://github.com/creativetimofficial/argon-dashboard/blob/master/LICENSE.md" class="nav-link" target="_blank">MIT License</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</footer>
+
+<script>
+    function addEvent(event, elem, func) {
+        if (elem.addEventListener) // W3C DOM
+            elem.addEventListener(event, func, false);
+        else if (elem.attachEvent) { // IE DOM
+            elem.attachEvent("on" + event, func);
+        } else { // No much to do
+            elem["on" + event] = func;
+        }
+    }
+
+    function redirectToLogin() {
+        if (this.status === 200) {
+            return window.location = this.responseURL || '/login';
+        }
+    }
+
+    function logout(event) {
+        if (!event.target.className.includes('logout')) {
+            return;
+        }
+
+        var xhr = new XMLHttpRequest();
+
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState == XMLHttpRequest.DONE && xhr.status != 0) {
+                if (xhr.status == 200 || xhr.status == 302) {
+                    window.location.reload(false); 
+                } else {
+                    alert('There was an error trying to log you out');
+                }
+            }
+        };
+
+        xhr.addEventListener("load", redirectToLogin);
+        xhr.open("POST", "/logout");
+        xhr.setRequestHeader("RequestVerificationToken", 
+            document.getElementById('RequestVerificationToken').value);
+        xhr.send();
+    }
+
+    var bodyElement = document.querySelector('body');
+    addEvent('click', bodyElement, logout);
+</script>
