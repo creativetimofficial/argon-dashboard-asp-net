@@ -139,7 +139,6 @@ The documentation for the Argon Dashboard ASP.NET Core is hosted at [website](ht
 │   │       │   _Header.cshtml
 │   │       │   _IdentityLayout.cshtml
 │   │       │   _Layout.cshtml
-│   │       │   _LoginPartial.cshtml
 │   │       │   _Navbar.cshtml
 │   │       │   _NavbarUserInfo.cshtml
 │   │       │   _Sidebar.cshtml

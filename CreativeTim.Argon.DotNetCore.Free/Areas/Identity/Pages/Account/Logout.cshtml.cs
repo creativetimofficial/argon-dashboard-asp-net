@@ -37,7 +37,7 @@ namespace CreativeTim.Argon.DotNetCore.Free.Areas.Identity.Pages.Account
             }
             else
             {
-                return Page();
+                return RedirectToPage("/Account/Login");
             }
         }
     }
