@@ -1,0 +1,41 @@
+services:
+  creativetim.argon.dotnetcore.free:
+    build:
+      context: C:\Users\Kallisto\Desktop\argon-dashboard-asp-net-master
+      dockerfile: CreativeTim.Argon.DotNetCore.Free/Dockerfile
+    depends_on:
+    - db
+    - redis
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_HTTPS_PORT: '44308'
+      ASPNETCORE_URLS: https://+:443;http://+:80
+      CONNECTIONSTRINGS__POSTGRESCONNECTION: host=db;database=creativeTim;user id=creativeTim;password=creativeTim
+      REDIS_INSTANCENAME: redis
+    image: creativetimargondotnetcorefree
+    ports:
+    - published: 60151
+      target: 80
+    - published: 44308
+      target: 443
+    volumes:
+    - C:\Users\Kallisto\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
+    - C:\Users\Kallisto\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro
+  db:
+    environment:
+      POSTGRES_PASSWORD: creativeTim
+      POSTGRES_USER: creativeTim
+    image: postgres
+    ports:
+    - published: 5432
+      target: 5432
+    volumes:
+    - postgresql-data:/var/lib/postgresql/data:rw
+  redis:
+    image: redis:alpine
+    ports:
+    - published: 6379
+      target: 6379
+version: '3.4'
+volumes:
+  postgresql-data: {}

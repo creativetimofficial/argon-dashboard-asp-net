@@ -17,6 +17,7 @@ using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.Mvc.ApplicationModels;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 
 namespace CreativeTim.Argon.DotNetCore.Free
 {
@@ -57,7 +58,6 @@ namespace CreativeTim.Argon.DotNetCore.Free
 
             services.AddDefaultIdentity<ApplicationUser>()
                 .AddRoles<IdentityRole>()
-                .AddDefaultUI(UIFramework.Bootstrap4)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
             services.AddScoped<IUserClaimsPrincipalFactory<ApplicationUser>, ApplicationUserClaimsPrincipalFactory>();
@@ -118,8 +118,9 @@ namespace CreativeTim.Argon.DotNetCore.Free
 
             services.Configure<ScriptTags>(Configuration.GetSection(nameof(ScriptTags)));
 
-            services.AddMvc(options =>
+            services.AddMvc(options => 
             {
+                options.EnableEndpointRouting = false;
                 // Slugify routes so that we can use /employee/employee-details/1 instead of
                 // the default /Employee/EmployeeDetails/1
                 //
@@ -143,7 +144,7 @@ namespace CreativeTim.Argon.DotNetCore.Free
                 options.Conventions.AddAreaPageRoute("Identity", "/Account/Login", "/login");
                 options.Conventions.AddAreaPageRoute("Identity", "/Account/Logout", "/logout");
                 options.Conventions.AddAreaPageRoute("Identity", "/Account/ForgotPassword", "/forgot-password");
-            }).SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
+            }).SetCompatibilityVersion(CompatibilityVersion.Version_3_0)
                 .AddSessionStateTempDataProvider();
 
             // You probably want to use in-memory cache if not developing using docker-compose
@@ -165,7 +166,7 @@ namespace CreativeTim.Argon.DotNetCore.Free
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             // This is required to make the application work behind a proxy like NGINX or HAPROXY
             // that also provides TLS termination (switching from incoming HTTPS to HTTP)
@@ -174,7 +175,7 @@ namespace CreativeTim.Argon.DotNetCore.Free
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseDatabaseErrorPage();
+                //app.UseDatabaseErrorPage();
             }
             else
             {
@@ -199,6 +200,14 @@ namespace CreativeTim.Argon.DotNetCore.Free
                     name: "default",
                     template: "{controller=home}/{action=index}/{id?}");
             });
+
+            //app.UseEndpoints(endpoints =>
+            //{
+            //    endpoints.MapControllerRoute(
+            //        name: "default",
+            //        pattern: "{controller=home}/{action=index}/{id?}");
+            //    endpoints.MapRazorPages();
+            //});
         }
     }
 }
