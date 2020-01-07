@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <partial name="_PageHeadElement"/>
+    
+    @RenderSection("Styles", required: false)
+    @RenderSection("HeadScripts", required: false)
+</head>
+<body>
+    <partial name="_GoogleTagManagerBodyElement" />
+
+    <partial name="_Sidebar"/>
+    <div class="main-content">
+        <partial name="_Navbar"/>
+        <partial name="_Header"/>
+        <!-- Page content -->
+        <div class="container-fluid mt--7">
+            <!-- Page content -->
+            @RenderBody()
+            <partial name="_Footer" />
+        </div>
+    </div>
+    
+    <partial name="_ThemeScripts" />
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
