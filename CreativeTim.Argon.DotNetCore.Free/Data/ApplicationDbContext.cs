@@ -1,6 +1,5 @@
 ﻿using CreativeTim.Argon.DotNetCore.Free.Models.Identity;
 using Microsoft.AspNetCore.DataProtection.EntityFrameworkCore;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 

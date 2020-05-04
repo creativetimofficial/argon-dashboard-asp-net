@@ -1,10 +1,8 @@
 ﻿using System;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using CreativeTim.Argon.DotNetCore.Free.Data;
 using CreativeTim.Argon.DotNetCore.Free.Infrastructure;
@@ -12,11 +10,15 @@ using CreativeTim.Argon.DotNetCore.Free.Infrastructure.ApplicationUserClaims;
 using CreativeTim.Argon.DotNetCore.Free.Infrastructure.AppSettingsModels;
 using CreativeTim.Argon.DotNetCore.Free.Models.Identity;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.HttpOverrides;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ApplicationModels;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using CreativeTim.Argon.DotNetCore.Free.Infrastructure.Startup;
 
 namespace CreativeTim.Argon.DotNetCore.Free
 {
@@ -40,24 +42,32 @@ namespace CreativeTim.Argon.DotNetCore.Free
 
             services.Configure<CookiePolicyOptions>(options =>
             {
-                // This lambda determines whether user consent for non-essential cookies is needed for a given request.
+                // This lambda determines whether user consent for non-essential cookies is needed
+                // for a given request.
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.Strict;
             });
 
             services.AddDbContext<ApplicationDbContext>(options =>
             {
+                // !! Note:
+                //
+                // If you switch database providers, you might be required to re-create the migrations
+                // as they are not always compatible between database systems
+
                 // The easiest option for development outside a container is to use SQLite
                 // options.UseSqlite(Configuration.GetConnectionString("SqliteConnection"));
                 // Or use this for PostgreSQL:
                 options.UseNpgsql(Configuration.GetConnectionString("PostgresConnection"));
+
+                // Use this to connect to a MySQL server:
+                // options.UseMySQL(Configuration.GetConnectionString("MysqlConnection"));
                 // Or use this for SQL Server (if running on Windows):
-                // options.UseSqlServer(Configuration.GetConnectionString("MsSqlConnection"))
+                // options.UseSqlServer(Configuration.GetConnectionString("MsSqlConnection"));
             });
 
             services.AddDefaultIdentity<ApplicationUser>()
                 .AddRoles<IdentityRole>()
-                .AddDefaultUI(UIFramework.Bootstrap4)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
             services.AddScoped<IUserClaimsPrincipalFactory<ApplicationUser>, ApplicationUserClaimsPrincipalFactory>();
@@ -118,8 +128,8 @@ namespace CreativeTim.Argon.DotNetCore.Free
 
             services.Configure<ScriptTags>(Configuration.GetSection(nameof(ScriptTags)));
 
-            services.AddMvc(options =>
-            {
+            services.AddControllersWithViews(options =>
+            { 
                 // Slugify routes so that we can use /employee/employee-details/1 instead of
                 // the default /Employee/EmployeeDetails/1
                 //
@@ -130,21 +140,25 @@ namespace CreativeTim.Argon.DotNetCore.Free
                         new SlugifyParameterTransformer()));
 
                 // Enable Antiforgery feature by default on all controller actions
-                // See more at https://docs.microsoft.com/en-us/aspnet/core/security/anti-request-forgery?view=aspnetcore-2.2
                 options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
-            }).AddRazorPagesOptions(options =>
-            {
-                // Perform the same slugify configuration for Razor pages
-                options.Conventions.Add(
-                    new PageRouteTransformerConvention(
-                        new SlugifyParameterTransformer()));
+            });
 
-                options.Conventions.AddAreaPageRoute("Identity", "/Account/Register", "/register");
-                options.Conventions.AddAreaPageRoute("Identity", "/Account/Login", "/login");
-                options.Conventions.AddAreaPageRoute("Identity", "/Account/Logout", "/logout");
-                options.Conventions.AddAreaPageRoute("Identity", "/Account/ForgotPassword", "/forgot-password");
-            }).SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
+            services.AddRazorPages(options =>
+                {
+                    options.Conventions.AddAreaPageRoute("Identity", "/Account/Register", "/register");
+                    options.Conventions.AddAreaPageRoute("Identity", "/Account/Login", "/login");
+                    options.Conventions.AddAreaPageRoute("Identity", "/Account/Logout", "/logout");
+                    options.Conventions.AddAreaPageRoute("Identity", "/Account/ForgotPassword", "/forgot-password");
+                })
+                .SetCompatibilityVersion(CompatibilityVersion.Version_3_0)
                 .AddSessionStateTempDataProvider();
+
+            services.AddAuthorization(options =>
+            {
+                options.DefaultPolicy = new AuthorizationPolicyBuilder()
+                    .RequireAuthenticatedUser()
+                    .Build();
+            });
 
             // You probably want to use in-memory cache if not developing using docker-compose
             // services.AddMemoryCache();
@@ -162,10 +176,15 @@ namespace CreativeTim.Argon.DotNetCore.Free
                 // Make the session cookie essential
                 options.Cookie.IsEssential = true;
             });
+
+            // This adds a hosted service that, on application start-up, seeds the database with initial data.
+            // You can remove this if you want to prevent the seeding process or you can change the initial data
+            // to suit your needs in the IdentityDataSeeder class.
+            services.AddHostedService<DbSeederHostedService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             // This is required to make the application work behind a proxy like NGINX or HAPROXY
             // that also provides TLS termination (switching from incoming HTTPS to HTTP)
@@ -189,15 +208,17 @@ namespace CreativeTim.Argon.DotNetCore.Free
             app.UseStaticFiles();
             app.UseCookiePolicy();
 
-            app.UseAuthentication();
-
             app.UseSession();
 
-            app.UseMvc(routes =>
+            app.UseRouting();
+
+            app.UseAuthentication();
+            app.UseAuthorization();
+
+            app.UseEndpoints(eb =>
             {
-                routes.MapRoute(
-                    name: "default",
-                    template: "{controller=home}/{action=index}/{id?}");
+                eb.MapRazorPages();
+                eb.MapControllerRoute("default", "{controller=home}/{action=index}/{id?}");
             });
         }
     }
