@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 
 namespace CreativeTim.Argon.DotNetCore.Free.Data.Seeders
 {
@@ -69,13 +70,31 @@ namespace CreativeTim.Argon.DotNetCore.Free.Data.Seeders
             }
         }
 
-        public static async Task SeedDataAsync(IServiceProvider services) 
+        public static async Task SeedDataAsync(IServiceProvider services, ILogger logger) 
         {
             var context = services.GetRequiredService<ApplicationDbContext>();
             var userManager = services.GetRequiredService<UserManager<TIdentityUser>>();
             var roleManager = services.GetRequiredService<RoleManager<TIdentityRole>>();
 
-            await context.Database.EnsureCreatedAsync();
+            var retries = 3;
+            ensureCreated:
+            try
+            {
+                await context.Database.EnsureCreatedAsync();
+            }
+            catch (Exception ex)
+            {
+                if (retries == 0)
+                {
+                    throw;
+                }
+
+                logger.LogWarning(ex, $"An error occurred while seeding the database ; maybe the server isn't currently running, will retry {retries} more times after 5 seconds");
+                await Task.Delay(5000);
+
+                retries -= 1;
+                goto ensureCreated;
+            }
 
             await CreateDefaultAdminRole(roleManager);
             var defaultAdminUser = await CreateDefaultAdminUser(userManager);
