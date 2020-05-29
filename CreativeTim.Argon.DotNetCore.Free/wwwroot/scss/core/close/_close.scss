@@ -6,7 +6,7 @@
     @if $enable-transitions {
         transition: $transition-base;
     }
-    
+
     &>span:not(.sr-only) {
         background-color: $close-bg;
         color: $close-color;
@@ -29,6 +29,19 @@
 
         span:not(.sr-only) {
             background-color: $close-hover-bg;
+        }
+    }
+}
+
+.close-dark {
+    &>span:not(.sr-only) {
+        color: rgba(255, 255, 255, .8);
+    }
+
+    &:hover,
+    &:focus {
+        &>span:not(.sr-only) {
+            color: rgba(255, 255, 255, 1);
         }
     }
 }

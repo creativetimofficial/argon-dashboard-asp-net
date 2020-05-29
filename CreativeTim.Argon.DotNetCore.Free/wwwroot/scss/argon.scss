@@ -1,42 +1,15 @@
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /*!
 
 =========================================================
-* Argon Dashboard - v1.0.0
+* Argon Dashboard - v1.2.0
 =========================================================
 
 * Product Page: https://www.creative-tim.com/product/argon-dashboard
-* Copyright 2018 Creative Tim (https://www.creative-tim.com)
+* Copyright 2020 Creative Tim (https://www.creative-tim.com)
 * Licensed under MIT (https://github.com/creativetimofficial/argon-dashboard/blob/master/LICENSE.md)
 
-* Coded by Creative Tim
+* Coded by www.creative-tim.com
 
 =========================================================
 
@@ -44,14 +17,21 @@
 
 */
 
-// Core
 
+
+// Bootstrap functions
+@import 'bootstrap/functions';
+@import "bootstrap/mixins";
+
+// Argon functions
 @import "custom/functions";
 @import "custom/variables";
+@import "bootstrap/variables";
+
+// Argon mixins
 @import "custom/mixins";
 
-// Bootstrap (4.1.3) components
-
+// Bootstrap components
 @import "bootstrap/root";
 @import "bootstrap/reboot";
 @import "bootstrap/type";
@@ -85,14 +65,9 @@
 @import "bootstrap/utilities";
 @import "bootstrap/print";
 
-// Argon utilities and components
-
-@import "custom/reboot";
-@import "custom/utilities";
-@import "custom/components";
-
-// Vendor (Plugins)
-
-@import "custom/vendors";
+// Argon components
+@import 'custom/components';
+@import 'custom/utilities';
+@import 'custom/vendors';
 
 

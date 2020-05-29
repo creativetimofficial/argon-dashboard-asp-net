@@ -1,0 +1,13 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+
+<!-- Topnav -->
+<nav class="navbar navbar-top navbar-expand navbar-dark bg-primary border-bottom">
+    <div class="container-fluid">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <partial name="Topnav/_Search"/>
+            <partial name="Topnav/_Links"/>
+            <partial name="Topnav/_CurrentUser"/>
+        </div>
+    </div>
+</nav>

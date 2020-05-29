@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <partial name="_PageHeadElement"/>
+
+    @RenderSection("Styles", required: false)
+    @RenderSection("HeadScripts", required: false)
+</head>
+<body>
+<partial name="_GoogleTagManagerBodyElement"/>
+
+<partial name="_Sidenav"/>
+<div class="main-content" id="panel">
+    
+    <partial name="Topnav/_TopnavProfile" />
+    
+    <!-- Header -->
+    <div class="header pb-6 d-flex align-items-center" style="min-height: 500px; background-image: url(../img/theme/profile-cover.jpg); background-size: cover; background-position: center top;">
+        <!-- Mask -->
+        <span class="mask bg-gradient-default opacity-8"></span>
+        <!-- Header container -->
+        <div class="container-fluid d-flex align-items-center">
+            <div class="row">
+                <div class="col-lg-7 col-md-10">
+                    <h1 class="display-2 text-white">Hello,</h1>
+                    <p class="text-white mt-0 mb-5">
+                        This is your profile page. You can see the progress you've made with your work and manage
+                        your projects or assigned tasks
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- / Header -->
+
+    <!-- Page content -->
+    <div class="container-fluid mt--6">
+        <!-- Page content -->
+        @RenderBody()
+        <partial name="_Footer"/>
+    </div>
+</div>
+
+<partial name="_ThemeScripts"/>
+
+@RenderSection("Scripts", required: false)
+</body>
+</html>

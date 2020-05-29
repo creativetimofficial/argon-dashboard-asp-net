@@ -1,25 +1,29 @@
 //
-// Vertical navbar
+// Vertical navbar + Sidenav
 //
 
 
-// Vertical
-//
-// Creates a vertically aligned version of the navbar
 .navbar-vertical {
-    box-shadow: $navbar-vertical-box-shadow;
-    
-    .navbar {
-        border-width: 0 0 1px 0;
-        border-style: solid;
+    padding-top: 0;
+    border-width: 0 0 1px 0;
+    border-style: solid;
+    @if $enable-shadows {
+        box-shadow: $navbar-vertical-box-shadow;
     }
-
 
     // Navbar light
 
-    .navbar-light {
+    &.navbar-light {
         background-color: $navbar-light-bg;
         border-color: $navbar-light-border-color;
+    }
+
+
+    // Navbar dark
+
+    &.navbar-dark {
+        background-color: $navbar-dark-bg;
+        border-color: $navbar-dark-border-color;
     }
 
 
@@ -42,17 +46,14 @@
         .navbar-collapse {
             margin-left: -$navbar-padding-x;
             margin-right: -$navbar-padding-x;
-            padding-left: $navbar-padding-x;
-            padding-right: $navbar-padding-x;
 
             &:before {
                 content: '';
                 display: block;
-                margin: $navbar-padding-y (-$navbar-padding-x);
+                margin: $navbar-padding-y / 2;
             }
         }
     }
-
 
 
     // Navbar navigaton
@@ -68,18 +69,11 @@
             padding-left: $navbar-padding-x;
             padding-right: $navbar-padding-x;
             font-size: $navbar-nav-link-font-size;
+            font-weight: $navbar-nav-link-font-weight;
 
             &.active {
                 position: relative;
 
-                &:before {
-                    content: '';
-                    position: absolute;
-                    left: 0;
-                    top: $nav-link-padding-y;
-                    bottom: $nav-link-padding-y;
-                    border-left: 2px solid $primary;
-                }
             }
 
 
@@ -102,13 +96,21 @@
                 }
             }
         }
+
+        .nav-sm {
+            .nav-link {
+                font-size: .8125rem;
+            }
+        }
     }
 
 
     // Navbar navigation
+
     .navbar-nav .nav-link {
         display: flex;
         align-items: center;
+        white-space: nowrap;
     }
 
     .navbar-nav .nav-link[data-toggle="collapse"] {
@@ -122,12 +124,14 @@
             font-weight: 700;
             content: "\f105";
             margin-left: auto;
-            color: $text-muted;
-            transition: $transition-base;
-        } // Expanded
-        &[aria-expanded="true"] {
+            color: $gray-400;
+            @include transition($transition-base);
+        }
 
+        // Expanded
+        &[aria-expanded="true"] {
             &:after {
+                color: theme-color("primary");
                 transform: rotate(90deg);
             }
         }
@@ -155,10 +159,9 @@
 
 
     // Expanded navbar specific styles
-    &.navbar-expand {
-        @each $breakpoint,
-        $dimension in $grid-breakpoints {
 
+    &.navbar-expand {
+        @each $breakpoint, $dimension in $grid-breakpoints {
             &-#{$breakpoint} {
                 @include media-breakpoint-up(#{$breakpoint}) {
                     display: block;
@@ -167,10 +170,14 @@
                     bottom: 0;
                     width: 100%;
                     max-width: $navbar-vertical-width;
-                    padding-left: $navbar-vertical-padding-x;
-                    padding-right: $navbar-vertical-padding-x;
-
                     overflow-y: auto;
+                    padding-left: 0;
+                    padding-right: 0;
+
+                    .navbar-inner {
+                        padding-left: $navbar-vertical-padding-x;
+                        padding-right: $navbar-vertical-padding-x;
+                    }
 
                     // Container
                     >[class*="container"] {
@@ -218,6 +225,7 @@
 
 
                     // Navbar navigation
+
                     .navbar-nav {
                         flex-direction: column;
                         margin-left: -$navbar-vertical-padding-x;
@@ -226,60 +234,311 @@
 
                     .navbar-nav .nav-link {
                         padding: $navbar-vertical-nav-link-padding-y $navbar-vertical-nav-link-padding-x;
+                    }
 
-                        &.active {
-                            &:before {
-                                top: $nav-link-padding-y;
-                                bottom: $nav-link-padding-y;
-                                left: 0;
-                                right: auto;
-                                border-left: 2px solid $primary;
-                                border-bottom: 0;
+                    .navbar-nav > .nav-item {
+                        margin-top: 2px;
+
+                        > .nav-link {
+                            &.active {
+                                background: $gray-100;
+                                margin-right: .5rem;
+                                margin-left: .5rem;
+                                padding-left: 1rem;
+                                padding-right: 1rem;
+                                border-radius: $border-radius;
                             }
                         }
                     }
 
+                    .lavalamp-object {
+                        width: calc(100% - 1rem) !important;
+                        background: theme-color("primary");
+                        color: color-yiq($primary);
+                        margin-right: .5rem;
+                        margin-left: .5rem;
+                        padding-left: 1rem;
+                        padding-right: 1rem;
+                        border-radius: $border-radius;
+                    }
 
                     // Second level
                     .navbar-nav .nav .nav-link {
-                        padding-left: $navbar-vertical-padding-x + $navbar-icon-min-width;
+                        padding-top: $navbar-vertical-nav-link-padding-y / 1.5;
+                        padding-bottom: $navbar-vertical-nav-link-padding-y / 1.5;
+                        padding-left: 15px;
+                        span.sidenav-normal{
+                          padding-left: 8px;
+                          transition: all .1s ease 0s;
+                        }
+
+                        span.sidenav-mini-icon{
+                          width: 34px;
+                          text-align: center;
+                          transition: all .1s ease 0s;
+                        }
                     }
 
 
                     // Third level
                     .navbar-nav .nav .nav .nav-link {
                         padding-left: $navbar-vertical-padding-x * 1.5 + $navbar-icon-min-width;
-                    }
 
-                    // Navbar brand
-                    .navbar-brand {
-                        display: block;
-                        text-align: center;
-                        padding-top: (2rem - $navbar-padding-y);
-                        padding-bottom: (2rem - $navbar-padding-y);
-                    }
-
-                    .navbar-brand-img {
-                        max-height: 2.5rem;
-                    }
-
-                    // Navbar user
-                    .navbar-user {
-                        margin-left: -$navbar-vertical-padding-x;
-                        margin-right: -$navbar-vertical-padding-x;
-                        padding-top: $spacer;
-                        padding-bottom: $spacer - $navbar-padding-y;
-                        padding-left: $navbar-vertical-padding-x;
-                        padding-right: $navbar-vertical-padding-x;
-                        border-top: 1px solid $border-color;
-
-                        // Dropup menu
-                        .dropup .dropdown-menu {
-                            left: 50%;
-                            transform: translateX(-50%);
-                        }
                     }
                 }
+            }
+        }
+    }
+
+
+}
+
+
+// Offsets the main content depending on the sidebar positioning
+
+.navbar-vertical.navbar-expand {
+    @each $breakpoint, $dimension in $grid-breakpoints {
+        &-#{$breakpoint} {
+            @include media-breakpoint-up(#{$breakpoint}) {
+                &.fixed-left + .main-content {
+                    margin-left: $navbar-vertical-width;
+                }
+                &.fixed-right + .main-content {
+                    margin-right: $navbar-vertical-width;
+                }
+            }
+        }
+    }
+}
+
+.sidenav {
+    &.fixed-left + .main-content {
+        margin-left: $navbar-vertical-width;
+        @include transition($transition-base);
+    }
+    &.fixed-right + .main-content {
+        margin-right: $navbar-vertical-width;
+        @include transition($transition-base);
+    }
+}
+
+.g-sidenav-pinned {
+    .sidenav {
+        @include media-breakpoint-up(xl) {
+            &.fixed-left + .main-content {
+                margin-left: $navbar-vertical-open-width;
+            }
+            &.fixed-right + .main-content {
+                margin-right: $navbar-vertical-open-width;
+            }
+        }
+    }
+}
+
+
+//
+// Sidenav
+//
+
+.sidenav {
+    z-index: 1050;
+    transition: all 0.4s ease;
+
+    @include media-breakpoint-up(xl) {
+        &:hover {
+            max-width: $navbar-vertical-open-width;
+        }
+
+        .sidenav-toggler {
+            padding: 1.5rem;
+        }
+    }
+
+    .navbar-brand,
+    .navbar-heading .docs-normal {
+      display: none;
+    }
+
+    .navbar-heading .docs-mini{
+      padding-left: 3px;
+    }
+
+    .navbar-heading{
+      transition: all .1s ease;
+    }
+
+    .navbar-brand{
+      padding: 1.5rem;
+    }
+}
+
+.sidenav-header {
+    height: 78px;
+}
+
+
+// Sidenav states
+
+.g-sidenav-show {
+    .sidenav {
+        .navbar-brand,
+        .navbar-heading .docs-normal {
+            display: block;
+        }
+        .navbar-heading .docs-mini {
+          display: none;
+        }
+
+
+        .nav-item .collapse {
+            height: auto;
+            @include transition($transition-base);
+        }
+
+        .nav-link-text{
+          transition: 0.3s ease;
+          opacity: 1;
+        }
+
+        .nav-item .sidenav-mini-icon{
+          opacity: 0;
+        }
+    }
+}
+
+.g-sidenav-pinned {
+    .sidenav {
+        max-width: $navbar-vertical-open-width !important;
+
+        .navbar-brand,
+        .navbar-heading {
+            display: block;
+        }
+    }
+}
+
+.g-sidenav-hidden:not(.g-sidenav-show) {
+    .sidenav {
+        .navbar-nav > .nav-item {
+            > .nav-link {
+                &:after {
+                    content: '';
+                }
+            }
+        }
+
+        .nav-item .collapse .sidenav-normal {
+            display: none !important;
+        }
+
+        .nav-link-text {
+            opacity: 0;
+        }
+    }
+}
+
+.g-sidenav-hide {
+    .sidenav {
+        .navbar-nav > .nav-item {
+            > .nav-link {
+                &:after {
+                    content: '';
+                }
+            }
+        }
+
+        .nav-item .collapse .sidenav-normal {
+            display: none !important;
+        }
+
+        .nav-link-text {
+            opacity: 0;
+        }
+    }
+}
+
+
+// Media fixes for iPhone 5 like resolutions
+
+@include media-breakpoint-down(lg) {
+    .sidenav {
+        transform: translateX(-$navbar-vertical-width);
+
+        &.fixed-left + .main-content {
+            margin-left: 0 !important;
+        }
+    }
+
+    .g-sidenav-pinned {
+        .sidenav {
+            transform: translateX(0);
+        }
+    }
+}
+
+// Sidenav toggler
+
+.sidenav-toggler-inner,
+.sidenav-toggler-line {
+    width: 18px;
+    @include transition($transition-base);
+}
+
+.sidenav-toggler-inner {
+    position: relative;
+
+    &:before {
+        content: '';
+        position: absolute;
+        width: 40px;
+        height: 40px;
+        left: -11px;
+        top: -14px;
+        // background-color: rgba($primary, .15);
+        border-radius: 50%;
+        transform: scale(0);
+        @include transition($transition-cubic-bezier);
+    }
+}
+
+.sidenav-toggler-line {
+    height: 2px;
+    background-color: theme-color("default");
+    display: block;
+    position: relative;
+
+    &:not(:last-child) {
+        margin-bottom: 3px;
+    }
+}
+
+.sidenav-toggler-dark {
+    .sidenav-toggler-line {
+        background-color: $white;
+    }
+}
+
+.sidenav-toggler {
+    cursor: pointer;
+
+    &.active {
+        .sidenav-toggler-inner {
+            &:before {
+                transform: scale(1);
+            }
+        }
+
+        .sidenav-toggler-line {
+            background-color: theme-color("primary]");
+
+            &:first-child {
+                width: 13px;
+                transform: translateX(5px);
+            }
+
+            &:last-child {
+                width: 13px;
+                transform: translateX(5px);
             }
         }
     }

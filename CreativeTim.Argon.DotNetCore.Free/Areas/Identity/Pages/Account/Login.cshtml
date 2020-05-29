@@ -9,14 +9,20 @@
     <div class="col-lg-5 col-md-7">
         <div class="card bg-secondary shadow border-0">
             <div class="card-header bg-transparent pb-5">
-                <div class="text-muted text-center mt-2 mb-3"><small>Sign in with</small></div>
+                <div class="text-muted text-center mt-2 mb-3">
+                    <small>Sign in with</small>
+                </div>
                 <div class="btn-wrapper text-center">
                     <a href="#" class="btn btn-neutral btn-icon">
-                        <span class="btn-inner--icon"><img src="~/img/icons/common/github.svg"></span>
+                        <span class="btn-inner--icon">
+                            <img src="~/img/icons/common/github.svg">
+                        </span>
                         <span class="btn-inner--text">Github</span>
                     </a>
                     <a href="#" class="btn btn-neutral btn-icon">
-                        <span class="btn-inner--icon"><img src="~/img/icons/common/google.svg"></span>
+                        <span class="btn-inner--icon">
+                            <img src="~/img/icons/common/google.svg">
+                        </span>
                         <span class="btn-inner--text">Google</span>
                     </a>
                 </div>
@@ -24,7 +30,7 @@
             <div class="card-body px-lg-5 py-lg-5">
                 <div class="text-center text-muted mb-4">
                     <small>Or sign in with credentials</small>
-                    <br />
+                    <br/>
                     <small>
                         You can use <strong>admin@argon.com</strong> and <strong>Secret1+</strong> to login
                     </small>
@@ -45,23 +51,27 @@
                     <div class="form-group mb-3">
                         <div class="input-group input-group-alternative">
                             <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+                                <span class="input-group-text">
+                                    <i class="ni ni-email-83"></i>
+                                </span>
                             </div>
-                            <input asp-for="Input.Email" class="form-control" placeholder="Email" type="email" />
+                            <input asp-for="Input.Email" class="form-control" placeholder="Email" type="email"/>
                         </div>
                         <span asp-validation-for="Input.Email" class="invalid-feedback" style="display: block"></span>
                     </div>
                     <div class="form-group">
                         <div class="input-group input-group-alternative">
                             <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+                                <span class="input-group-text">
+                                    <i class="ni ni-lock-circle-open"></i>
+                                </span>
                             </div>
-                            <input asp-for="Input.Password" placeholder="Password" type="password" class="form-control" />
+                            <input asp-for="Input.Password" placeholder="Password" type="password" class="form-control"/>
                         </div>
                         <span asp-validation-for="Input.Password" class="invalid-feedback" style="display: block"></span>
                     </div>
                     <div class="custom-control custom-control-alternative custom-checkbox">
-                        <input asp-for="Input.RememberMe" class="custom-control-input" id=" customCheckLogin" type="checkbox" />
+                        <input asp-for="Input.RememberMe" class="custom-control-input" id=" customCheckLogin" type="checkbox"/>
                         <label class="custom-control-label" for=" customCheckLogin">
                             <span class="text-muted">@Html.DisplayNameFor(m => m.Input.RememberMe)</span>
                         </label>
@@ -74,15 +84,40 @@
         </div>
         <div class="row mt-3">
             <div class="col-6">
-                <a id="forgot-password" asp-page="./ForgotPassword" class="text-light"><small>Forgot password?</small></a>
+                <a id="forgot-password" asp-page="./ForgotPassword" class="text-light">
+                    <small>Forgot password?</small>
+                </a>
             </div>
             <div class="col-6 text-right">
-                <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl" class="text-light"><small>Create new account</small></a>
+                <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl" class="text-light">
+                    <small>Create new account</small>
+                </a>
             </div>
         </div>
     </div>
 </div>
 
 @section Scripts {
-    <partial name="_ValidationScriptsPartial" />
+    <partial name="_ValidationScriptsPartial"/>
+}
+
+@section IdentityHeader
+{
+    <div class="header bg-gradient-primary py-7 py-lg-8 pt-lg-9">
+        <div class="container">
+            <div class="header-body text-center mb-7">
+                <div class="row justify-content-center">
+                    <div class="col-xl-5 col-lg-6 col-md-8 px-5">
+                        <h1 class="text-white">Welcome!</h1>
+                        <p class="text-lead text-white">Use these awesome forms to login or create new account in your project for free.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="separator separator-bottom separator-skew zindex-100">
+            <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                <polygon class="fill-default" points="2560 0 2560 100 0 100"></polygon>
+            </svg>
+        </div>
+    </div>
 }

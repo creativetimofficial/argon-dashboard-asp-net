@@ -17,11 +17,16 @@
     .dropdown-item {
         padding: .5rem 1rem;
         font-size: $font-size-sm;
+
         > i,
         > svg {
             margin-right: 1rem;
             font-size: 1rem;
             vertical-align: -17%;
+        }
+
+        img {
+            margin-right: .5rem;
         }
     }
 }
@@ -29,7 +34,7 @@
 .dropdown-header {
     padding-left: 1rem;
     padding-right: 1rem;
-    color: $gray-100;
+    // color: $gray-100;
     font-size: .625rem;
     text-transform: uppercase;
     font-weight: 700;
@@ -60,6 +65,11 @@
     }
 }
 
+.dropdown-menu-dark {
+    .h1, .h2, .h3, .h4, .h5, .h6, a {
+        color: white;
+    }
+}
 
 // Size variations
 
@@ -69,11 +79,11 @@
 }
 
 .dropdown-menu-lg {
-    min-width: 260px;
+    min-width: 320px;
     border-radius: $border-radius-lg;
 }
 
 .dropdown-menu-xl {
-    min-width: 450px;
+    min-width: 420px;
     border-radius: $border-radius-lg;
 }
