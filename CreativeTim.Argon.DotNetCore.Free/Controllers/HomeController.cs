@@ -63,6 +63,7 @@ namespace CreativeTim.Argon.DotNetCore.Free.Controllers
 
             return View(new ProfileViewModel
             {
+                Username = user.UserName,
                 Email = user.Email,
                 FullName = user.FullName
             });
@@ -84,7 +85,7 @@ namespace CreativeTim.Argon.DotNetCore.Free.Controllers
             {
                 return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
             }
-
+            
             var email = await _userManager.GetEmailAsync(user);
             if (input.Email != email)
             {
@@ -120,6 +121,12 @@ namespace CreativeTim.Argon.DotNetCore.Free.Controllers
 
         [HttpGet("/tables")]
         public IActionResult Tables()
+        {
+            return View();
+        }
+        
+        [HttpGet("/upgrade")]
+        public IActionResult Upgrade()
         {
             return View();
         }

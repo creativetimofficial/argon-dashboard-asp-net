@@ -1,0 +1,42 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+
+<div class="dropdown-menu dropdown-menu-right">
+    <div class="dropdown-header noti-title">
+        <h6 class="text-overflow m-0">Welcome!</h6>
+    </div>
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <a href="@Url.Action("Profile")" class="dropdown-item">
+            <i class="ni ni-single-02"></i>
+            <span>My profile</span>
+        </a>
+        <a href="@Url.Action("Profile")" class="dropdown-item">
+            <i class="ni ni-settings-gear-65"></i>
+            <span>Settings</span>
+        </a>
+        <a href="@Url.Action("Profile")" class="dropdown-item">
+            <i class="ni ni-calendar-grid-58"></i>
+            <span>Activity</span>
+        </a>
+        <a href="@Url.Action("Profile")" class="dropdown-item">
+            <i class="ni ni-support-16"></i>
+            <span>Support</span>
+        </a>
+        <div class="dropdown-divider"></div>
+        <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new {area = ""})">
+            <button type="submit" class="dropdown-item logout">
+                <i class="ni ni-user-run"></i>
+                <span class="logout">Logout</span>
+            </button>
+        </form>
+    }
+    else
+    {
+        <a class="dropdown-item" asp-area="Identity" asp-page="/Account/Login">
+            <i class="ni ni-single-02"></i>
+            <span>Login</span>
+        </a>
+
+    }
+</div>

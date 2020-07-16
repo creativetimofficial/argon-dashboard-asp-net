@@ -12,5 +12,8 @@ namespace CreativeTim.Argon.DotNetCore.Free.Models
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
+
+        [Display(Name = "UserName")]
+        public string Username { get; set; }
     }
 }

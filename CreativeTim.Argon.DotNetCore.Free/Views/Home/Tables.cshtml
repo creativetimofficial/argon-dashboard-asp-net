@@ -4,23 +4,25 @@
 
 <div class="row">
     <div class="col">
-        <div class="card shadow">
+        <div class="card">
+            <!-- Card header -->
             <div class="card-header border-0">
-                <h3 class="mb-0">Card tables</h3>
+                <h3 class="mb-0">Light table</h3>
             </div>
+            <!-- Light table -->
             <div class="table-responsive">
                 <table class="table align-items-center table-flush">
                     <thead class="thead-light">
                         <tr>
-                            <th scope="col">Project</th>
-                            <th scope="col">Budget</th>
-                            <th scope="col">Status</th>
+                            <th scope="col" class="sort" data-sort="name">Project</th>
+                            <th scope="col" class="sort" data-sort="budget">Budget</th>
+                            <th scope="col" class="sort" data-sort="status">Status</th>
                             <th scope="col">Users</th>
-                            <th scope="col">Completion</th>
+                            <th scope="col" class="sort" data-sort="completion">Completion</th>
                             <th scope="col"></th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="list">
                         <tr>
                             <th scope="row">
                                 <div class="media align-items-center">
@@ -28,37 +30,38 @@
                                         <img alt="Image placeholder" src="~/img/theme/bootstrap.jpg">
                                     </a>
                                     <div class="media-body">
-                                        <span class="mb-0 text-sm">Argon Design System</span>
+                                        <span class="name mb-0 text-sm">Argon Design System</span>
                                     </div>
                                 </div>
                             </th>
-                            <td>
-                                $2,500 USD
+                            <td class="budget">
+                                $2500 USD
                             </td>
                             <td>
                                 <span class="badge badge-dot mr-4">
-                                    <i class="bg-warning"></i> pending
+                                    <i class="bg-warning"></i>
+                                    <span class="status">pending</span>
                                 </span>
                             </td>
                             <td>
                                 <div class="avatar-group">
-                                    <a href="#" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Ryan Tompson">
-                                        <img alt="Image placeholder" src="~/img/theme/team-1-800x800.jpg" class="rounded-circle">
+                                    <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Ryan Tompson">
+                                        <img alt="Image placeholder" src="~/img/theme/team-1.jpg">
                                     </a>
-                                    <a href="#" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Romina Hadid">
-                                        <img alt="Image placeholder" src="~/img/theme/team-2-800x800.jpg" class="rounded-circle">
+                                    <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Romina Hadid">
+                                        <img alt="Image placeholder" src="~/img/theme/team-2.jpg">
                                     </a>
-                                    <a href="#" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Alexander Smith">
-                                        <img alt="Image placeholder" src="~/img/theme/team-3-800x800.jpg" class="rounded-circle">
+                                    <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Alexander Smith">
+                                        <img alt="Image placeholder" src="~/img/theme/team-3.jpg">
                                     </a>
-                                    <a href="#" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Jessica Doe">
-                                        <img alt="Image placeholder" src="~/img/theme/team-4-800x800.jpg" class="rounded-circle">
+                                    <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Jessica Doe">
+                                        <img alt="Image placeholder" src="~/img/theme/team-4.jpg">
                                     </a>
                                 </div>
                             </td>
                             <td>
                                 <div class="d-flex align-items-center">
-                                    <span class="mr-2">60%</span>
+                                    <span class="completion mr-2">60%</span>
                                     <div>
                                         <div class="progress">
                                             <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"></div>
@@ -86,37 +89,38 @@
                                         <img alt="Image placeholder" src="~/img/theme/angular.jpg">
                                     </a>
                                     <div class="media-body">
-                                        <span class="mb-0 text-sm">Angular Now UI Kit PRO</span>
+                                        <span class="name mb-0 text-sm">Angular Now UI Kit PRO</span>
                                     </div>
                                 </div>
                             </th>
-                            <td>
-                                $1,800 USD
+                            <td class="budget">
+                                $1800 USD
                             </td>
                             <td>
-                                <span class="badge badge-dot">
-                                    <i class="bg-success"></i> completed
+                                <span class="badge badge-dot mr-4">
+                                    <i class="bg-success"></i>
+                                    <span class="status">completed</span>
                                 </span>
                             </td>
                             <td>
                                 <div class="avatar-group">
-                                    <a href="#" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Ryan Tompson">
-                                        <img alt="Image placeholder" src="~/img/theme/team-1-800x800.jpg" class="rounded-circle">
+                                    <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Ryan Tompson">
+                                        <img alt="Image placeholder" src="~/img/theme/team-1.jpg">
                                     </a>
-                                    <a href="#" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Romina Hadid">
-                                        <img alt="Image placeholder" src="~/img/theme/team-2-800x800.jpg" class="rounded-circle">
+                                    <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Romina Hadid">
+                                        <img alt="Image placeholder" src="~/img/theme/team-2.jpg">
                                     </a>
-                                    <a href="#" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Alexander Smith">
-                                        <img alt="Image placeholder" src="~/img/theme/team-3-800x800.jpg" class="rounded-circle">
+                                    <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Alexander Smith">
+                                        <img alt="Image placeholder" src="~/img/theme/team-3.jpg">
                                     </a>
-                                    <a href="#" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Jessica Doe">
-                                        <img alt="Image placeholder" src="~/img/theme/team-4-800x800.jpg" class="rounded-circle">
+                                    <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Jessica Doe">
+                                        <img alt="Image placeholder" src="~/img/theme/team-4.jpg">
                                     </a>
                                 </div>
                             </td>
                             <td>
                                 <div class="d-flex align-items-center">
-                                    <span class="mr-2">100%</span>
+                                    <span class="completion mr-2">100%</span>
                                     <div>
                                         <div class="progress">
                                             <div class="progress-bar bg-success" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"></div>
@@ -144,37 +148,38 @@
                                         <img alt="Image placeholder" src="~/img/theme/sketch.jpg">
                                     </a>
                                     <div class="media-body">
-                                        <span class="mb-0 text-sm">Black Dashboard</span>
+                                        <span class="name mb-0 text-sm">Black Dashboard</span>
                                     </div>
                                 </div>
                             </th>
-                            <td>
-                                $3,150 USD
+                            <td class="budget">
+                                $3150 USD
                             </td>
                             <td>
                                 <span class="badge badge-dot mr-4">
-                                    <i class="bg-danger"></i> delayed
+                                    <i class="bg-danger"></i>
+                                    <span class="status">delayed</span>
                                 </span>
                             </td>
                             <td>
                                 <div class="avatar-group">
-                                    <a href="#" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Ryan Tompson">
-                                        <img alt="Image placeholder" src="~/img/theme/team-1-800x800.jpg" class="rounded-circle">
+                                    <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Ryan Tompson">
+                                        <img alt="Image placeholder" src="~/img/theme/team-1.jpg">
                                     </a>
-                                    <a href="#" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Romina Hadid">
-                                        <img alt="Image placeholder" src="~/img/theme/team-2-800x800.jpg" class="rounded-circle">
+                                    <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Romina Hadid">
+                                        <img alt="Image placeholder" src="~/img/theme/team-2.jpg">
                                     </a>
-                                    <a href="#" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Alexander Smith">
-                                        <img alt="Image placeholder" src="~/img/theme/team-3-800x800.jpg" class="rounded-circle">
+                                    <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Alexander Smith">
+                                        <img alt="Image placeholder" src="~/img/theme/team-3.jpg">
                                     </a>
-                                    <a href="#" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Jessica Doe">
-                                        <img alt="Image placeholder" src="~/img/theme/team-4-800x800.jpg" class="rounded-circle">
+                                    <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Jessica Doe">
+                                        <img alt="Image placeholder" src="~/img/theme/team-4.jpg">
                                     </a>
                                 </div>
                             </td>
                             <td>
                                 <div class="d-flex align-items-center">
-                                    <span class="mr-2">72%</span>
+                                    <span class="completion mr-2">72%</span>
                                     <div>
                                         <div class="progress">
                                             <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100" style="width: 72%;"></div>
@@ -202,37 +207,38 @@
                                         <img alt="Image placeholder" src="~/img/theme/react.jpg">
                                     </a>
                                     <div class="media-body">
-                                        <span class="mb-0 text-sm">React Material Dashboard</span>
+                                        <span class="name mb-0 text-sm">React Material Dashboard</span>
                                     </div>
                                 </div>
                             </th>
-                            <td>
-                                $4,400 USD
+                            <td class="budget">
+                                $4400 USD
                             </td>
                             <td>
-                                <span class="badge badge-dot">
-                                    <i class="bg-info"></i> on schedule
+                                <span class="badge badge-dot mr-4">
+                                    <i class="bg-info"></i>
+                                    <span class="status">on schedule</span>
                                 </span>
                             </td>
                             <td>
                                 <div class="avatar-group">
-                                    <a href="#" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Ryan Tompson">
-                                        <img alt="Image placeholder" src="~/img/theme/team-1-800x800.jpg" class="rounded-circle">
+                                    <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Ryan Tompson">
+                                        <img alt="Image placeholder" src="~/img/theme/team-1.jpg">
                                     </a>
-                                    <a href="#" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Romina Hadid">
-                                        <img alt="Image placeholder" src="~/img/theme/team-2-800x800.jpg" class="rounded-circle">
+                                    <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Romina Hadid">
+                                        <img alt="Image placeholder" src="~/img/theme/team-2.jpg">
                                     </a>
-                                    <a href="#" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Alexander Smith">
-                                        <img alt="Image placeholder" src="~/img/theme/team-3-800x800.jpg" class="rounded-circle">
+                                    <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Alexander Smith">
+                                        <img alt="Image placeholder" src="~/img/theme/team-3.jpg">
                                     </a>
-                                    <a href="#" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Jessica Doe">
-                                        <img alt="Image placeholder" src="~/img/theme/team-4-800x800.jpg" class="rounded-circle">
+                                    <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Jessica Doe">
+                                        <img alt="Image placeholder" src="~/img/theme/team-4.jpg">
                                     </a>
                                 </div>
                             </td>
                             <td>
                                 <div class="d-flex align-items-center">
-                                    <span class="mr-2">90%</span>
+                                    <span class="completion mr-2">90%</span>
                                     <div>
                                         <div class="progress">
                                             <div class="progress-bar bg-info" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 90%;"></div>
@@ -260,37 +266,38 @@
                                         <img alt="Image placeholder" src="~/img/theme/vue.jpg">
                                     </a>
                                     <div class="media-body">
-                                        <span class="mb-0 text-sm">Vue Paper UI Kit PRO</span>
+                                        <span class="name mb-0 text-sm">Vue Paper UI Kit PRO</span>
                                     </div>
                                 </div>
                             </th>
-                            <td>
-                                $2,200 USD
+                            <td class="budget">
+                                $2200 USD
                             </td>
                             <td>
                                 <span class="badge badge-dot mr-4">
-                                    <i class="bg-success"></i> completed
+                                    <i class="bg-success"></i>
+                                    <span class="status">completed</span>
                                 </span>
                             </td>
                             <td>
                                 <div class="avatar-group">
-                                    <a href="#" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Ryan Tompson">
-                                        <img alt="Image placeholder" src="~/img/theme/team-1-800x800.jpg" class="rounded-circle">
+                                    <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Ryan Tompson">
+                                        <img alt="Image placeholder" src="~/img/theme/team-1.jpg">
                                     </a>
-                                    <a href="#" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Romina Hadid">
-                                        <img alt="Image placeholder" src="~/img/theme/team-2-800x800.jpg" class="rounded-circle">
+                                    <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Romina Hadid">
+                                        <img alt="Image placeholder" src="~/img/theme/team-2.jpg">
                                     </a>
-                                    <a href="#" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Alexander Smith">
-                                        <img alt="Image placeholder" src="~/img/theme/team-3-800x800.jpg" class="rounded-circle">
+                                    <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Alexander Smith">
+                                        <img alt="Image placeholder" src="~/img/theme/team-3.jpg">
                                     </a>
-                                    <a href="#" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Jessica Doe">
-                                        <img alt="Image placeholder" src="~/img/theme/team-4-800x800.jpg" class="rounded-circle">
+                                    <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Jessica Doe">
+                                        <img alt="Image placeholder" src="~/img/theme/team-4.jpg">
                                     </a>
                                 </div>
                             </td>
                             <td>
                                 <div class="d-flex align-items-center">
-                                    <span class="mr-2">100%</span>
+                                    <span class="completion mr-2">100%</span>
                                     <div>
                                         <div class="progress">
                                             <div class="progress-bar bg-success" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"></div>
@@ -314,6 +321,7 @@
                     </tbody>
                 </table>
             </div>
+            <!-- Card footer -->
             <div class="card-footer py-4">
                 <nav aria-label="...">
                     <ul class="pagination justify-content-end mb-0">
@@ -329,7 +337,9 @@
                         <li class="page-item">
                             <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
                         </li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">3</a>
+                        </li>
                         <li class="page-item">
                             <a class="page-link" href="#">
                                 <i class="fas fa-angle-right"></i>
@@ -342,26 +352,27 @@
         </div>
     </div>
 </div>
+
 <!-- Dark table -->
-<div class="row mt-5">
+<div class="row">
     <div class="col">
         <div class="card bg-default shadow">
             <div class="card-header bg-transparent border-0">
-                <h3 class="text-white mb-0">Card tables</h3>
+                <h3 class="text-white mb-0">Dark table</h3>
             </div>
             <div class="table-responsive">
                 <table class="table align-items-center table-dark table-flush">
                     <thead class="thead-dark">
                         <tr>
-                            <th scope="col">Project</th>
-                            <th scope="col">Budget</th>
-                            <th scope="col">Status</th>
+                            <th scope="col" class="sort" data-sort="name">Project</th>
+                            <th scope="col" class="sort" data-sort="budget">Budget</th>
+                            <th scope="col" class="sort" data-sort="status">Status</th>
                             <th scope="col">Users</th>
-                            <th scope="col">Completion</th>
+                            <th scope="col" class="sort" data-sort="completion">Completion</th>
                             <th scope="col"></th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="list">
                         <tr>
                             <th scope="row">
                                 <div class="media align-items-center">
@@ -369,37 +380,38 @@
                                         <img alt="Image placeholder" src="~/img/theme/bootstrap.jpg">
                                     </a>
                                     <div class="media-body">
-                                        <span class="mb-0 text-sm">Argon Design System</span>
+                                        <span class="name mb-0 text-sm">Argon Design System</span>
                                     </div>
                                 </div>
                             </th>
-                            <td>
-                                $2,500 USD
+                            <td class="budget">
+                                $2500 USD
                             </td>
                             <td>
                                 <span class="badge badge-dot mr-4">
-                                    <i class="bg-warning"></i> pending
+                                    <i class="bg-warning"></i>
+                                    <span class="status">pending</span>
                                 </span>
                             </td>
                             <td>
                                 <div class="avatar-group">
-                                    <a href="#" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Ryan Tompson">
-                                        <img alt="Image placeholder" src="~/img/theme/team-1-800x800.jpg" class="rounded-circle">
+                                    <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Ryan Tompson">
+                                        <img alt="Image placeholder" src="~/img/theme/team-1.jpg">
                                     </a>
-                                    <a href="#" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Romina Hadid">
-                                        <img alt="Image placeholder" src="~/img/theme/team-2-800x800.jpg" class="rounded-circle">
+                                    <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Romina Hadid">
+                                        <img alt="Image placeholder" src="~/img/theme/team-2.jpg">
                                     </a>
-                                    <a href="#" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Alexander Smith">
-                                        <img alt="Image placeholder" src="~/img/theme/team-3-800x800.jpg" class="rounded-circle">
+                                    <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Alexander Smith">
+                                        <img alt="Image placeholder" src="~/img/theme/team-3.jpg">
                                     </a>
-                                    <a href="#" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Jessica Doe">
-                                        <img alt="Image placeholder" src="~/img/theme/team-4-800x800.jpg" class="rounded-circle">
+                                    <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Jessica Doe">
+                                        <img alt="Image placeholder" src="~/img/theme/team-4.jpg">
                                     </a>
                                 </div>
                             </td>
                             <td>
                                 <div class="d-flex align-items-center">
-                                    <span class="mr-2">60%</span>
+                                    <span class="completion mr-2">60%</span>
                                     <div>
                                         <div class="progress">
                                             <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"></div>
@@ -427,37 +439,38 @@
                                         <img alt="Image placeholder" src="~/img/theme/angular.jpg">
                                     </a>
                                     <div class="media-body">
-                                        <span class="mb-0 text-sm">Angular Now UI Kit PRO</span>
+                                        <span class="name mb-0 text-sm">Angular Now UI Kit PRO</span>
                                     </div>
                                 </div>
                             </th>
-                            <td>
-                                $1,800 USD
+                            <td class="budget">
+                                $1800 USD
                             </td>
                             <td>
-                                <span class="badge badge-dot">
-                                    <i class="bg-success"></i> completed
+                                <span class="badge badge-dot mr-4">
+                                    <i class="bg-success"></i>
+                                    <span class="status">completed</span>
                                 </span>
                             </td>
                             <td>
                                 <div class="avatar-group">
-                                    <a href="#" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Ryan Tompson">
-                                        <img alt="Image placeholder" src="~/img/theme/team-1-800x800.jpg" class="rounded-circle">
+                                    <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Ryan Tompson">
+                                        <img alt="Image placeholder" src="~/img/theme/team-1.jpg">
                                     </a>
-                                    <a href="#" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Romina Hadid">
-                                        <img alt="Image placeholder" src="~/img/theme/team-2-800x800.jpg" class="rounded-circle">
+                                    <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Romina Hadid">
+                                        <img alt="Image placeholder" src="~/img/theme/team-2.jpg">
                                     </a>
-                                    <a href="#" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Alexander Smith">
-                                        <img alt="Image placeholder" src="~/img/theme/team-3-800x800.jpg" class="rounded-circle">
+                                    <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Alexander Smith">
+                                        <img alt="Image placeholder" src="~/img/theme/team-3.jpg">
                                     </a>
-                                    <a href="#" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Jessica Doe">
-                                        <img alt="Image placeholder" src="~/img/theme/team-4-800x800.jpg" class="rounded-circle">
+                                    <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Jessica Doe">
+                                        <img alt="Image placeholder" src="~/img/theme/team-4.jpg">
                                     </a>
                                 </div>
                             </td>
                             <td>
                                 <div class="d-flex align-items-center">
-                                    <span class="mr-2">100%</span>
+                                    <span class="completion mr-2">100%</span>
                                     <div>
                                         <div class="progress">
                                             <div class="progress-bar bg-success" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"></div>
@@ -485,37 +498,38 @@
                                         <img alt="Image placeholder" src="~/img/theme/sketch.jpg">
                                     </a>
                                     <div class="media-body">
-                                        <span class="mb-0 text-sm">Black Dashboard</span>
+                                        <span class="name mb-0 text-sm">Black Dashboard</span>
                                     </div>
                                 </div>
                             </th>
-                            <td>
-                                $3,150 USD
+                            <td class="budget">
+                                $3150 USD
                             </td>
                             <td>
                                 <span class="badge badge-dot mr-4">
-                                    <i class="bg-danger"></i> delayed
+                                    <i class="bg-danger"></i>
+                                    <span class="status">delayed</span>
                                 </span>
                             </td>
                             <td>
                                 <div class="avatar-group">
-                                    <a href="#" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Ryan Tompson">
-                                        <img alt="Image placeholder" src="~/img/theme/team-1-800x800.jpg" class="rounded-circle">
+                                    <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Ryan Tompson">
+                                        <img alt="Image placeholder" src="~/img/theme/team-1.jpg">
                                     </a>
-                                    <a href="#" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Romina Hadid">
-                                        <img alt="Image placeholder" src="~/img/theme/team-2-800x800.jpg" class="rounded-circle">
+                                    <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Romina Hadid">
+                                        <img alt="Image placeholder" src="~/img/theme/team-2.jpg">
                                     </a>
-                                    <a href="#" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Alexander Smith">
-                                        <img alt="Image placeholder" src="~/img/theme/team-3-800x800.jpg" class="rounded-circle">
+                                    <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Alexander Smith">
+                                        <img alt="Image placeholder" src="~/img/theme/team-3.jpg">
                                     </a>
-                                    <a href="#" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Jessica Doe">
-                                        <img alt="Image placeholder" src="~/img/theme/team-4-800x800.jpg" class="rounded-circle">
+                                    <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Jessica Doe">
+                                        <img alt="Image placeholder" src="~/img/theme/team-4.jpg">
                                     </a>
                                 </div>
                             </td>
                             <td>
                                 <div class="d-flex align-items-center">
-                                    <span class="mr-2">72%</span>
+                                    <span class="completion mr-2">72%</span>
                                     <div>
                                         <div class="progress">
                                             <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100" style="width: 72%;"></div>
@@ -543,37 +557,38 @@
                                         <img alt="Image placeholder" src="~/img/theme/react.jpg">
                                     </a>
                                     <div class="media-body">
-                                        <span class="mb-0 text-sm">React Material Dashboard</span>
+                                        <span class="name mb-0 text-sm">React Material Dashboard</span>
                                     </div>
                                 </div>
                             </th>
-                            <td>
-                                $4,400 USD
+                            <td class="budget">
+                                $4400 USD
                             </td>
                             <td>
-                                <span class="badge badge-dot">
-                                    <i class="bg-info"></i> on schedule
+                                <span class="badge badge-dot mr-4">
+                                    <i class="bg-info"></i>
+                                    <span class="status">on schedule</span>
                                 </span>
                             </td>
                             <td>
                                 <div class="avatar-group">
-                                    <a href="#" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Ryan Tompson">
-                                        <img alt="Image placeholder" src="~/img/theme/team-1-800x800.jpg" class="rounded-circle">
+                                    <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Ryan Tompson">
+                                        <img alt="Image placeholder" src="~/img/theme/team-1.jpg">
                                     </a>
-                                    <a href="#" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Romina Hadid">
-                                        <img alt="Image placeholder" src="~/img/theme/team-2-800x800.jpg" class="rounded-circle">
+                                    <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Romina Hadid">
+                                        <img alt="Image placeholder" src="~/img/theme/team-2.jpg">
                                     </a>
-                                    <a href="#" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Alexander Smith">
-                                        <img alt="Image placeholder" src="~/img/theme/team-3-800x800.jpg" class="rounded-circle">
+                                    <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Alexander Smith">
+                                        <img alt="Image placeholder" src="~/img/theme/team-3.jpg">
                                     </a>
-                                    <a href="#" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Jessica Doe">
-                                        <img alt="Image placeholder" src="~/img/theme/team-4-800x800.jpg" class="rounded-circle">
+                                    <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Jessica Doe">
+                                        <img alt="Image placeholder" src="~/img/theme/team-4.jpg">
                                     </a>
                                 </div>
                             </td>
                             <td>
                                 <div class="d-flex align-items-center">
-                                    <span class="mr-2">90%</span>
+                                    <span class="completion mr-2">90%</span>
                                     <div>
                                         <div class="progress">
                                             <div class="progress-bar bg-info" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 90%;"></div>
@@ -601,37 +616,38 @@
                                         <img alt="Image placeholder" src="~/img/theme/vue.jpg">
                                     </a>
                                     <div class="media-body">
-                                        <span class="mb-0 text-sm">Vue Paper UI Kit PRO</span>
+                                        <span class="name mb-0 text-sm">Vue Paper UI Kit PRO</span>
                                     </div>
                                 </div>
                             </th>
-                            <td>
-                                $2,200 USD
+                            <td class="budget">
+                                $2200 USD
                             </td>
                             <td>
                                 <span class="badge badge-dot mr-4">
-                                    <i class="bg-success"></i> completed
+                                    <i class="bg-success"></i>
+                                    <span class="status">completed</span>
                                 </span>
                             </td>
                             <td>
                                 <div class="avatar-group">
-                                    <a href="#" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Ryan Tompson">
-                                        <img alt="Image placeholder" src="~/img/theme/team-1-800x800.jpg" class="rounded-circle">
+                                    <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Ryan Tompson">
+                                        <img alt="Image placeholder" src="~/img/theme/team-1.jpg">
                                     </a>
-                                    <a href="#" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Romina Hadid">
-                                        <img alt="Image placeholder" src="~/img/theme/team-2-800x800.jpg" class="rounded-circle">
+                                    <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Romina Hadid">
+                                        <img alt="Image placeholder" src="~/img/theme/team-2.jpg">
                                     </a>
-                                    <a href="#" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Alexander Smith">
-                                        <img alt="Image placeholder" src="~/img/theme/team-3-800x800.jpg" class="rounded-circle">
+                                    <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Alexander Smith">
+                                        <img alt="Image placeholder" src="~/img/theme/team-3.jpg">
                                     </a>
-                                    <a href="#" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Jessica Doe">
-                                        <img alt="Image placeholder" src="~/img/theme/team-4-800x800.jpg" class="rounded-circle">
+                                    <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Jessica Doe">
+                                        <img alt="Image placeholder" src="~/img/theme/team-4.jpg">
                                     </a>
                                 </div>
                             </td>
                             <td>
                                 <div class="d-flex align-items-center">
-                                    <span class="mr-2">100%</span>
+                                    <span class="completion mr-2">100%</span>
                                     <div>
                                         <div class="progress">
                                             <div class="progress-bar bg-success" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"></div>
@@ -658,3 +674,23 @@
         </div>
     </div>
 </div>
+
+@section Breadcrumbs
+{
+    <div class="col-lg-6 col-7">
+        <h6 class="h2 text-white d-inline-block mb-0">Tables</h6>
+        <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+            <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                <li class="breadcrumb-item">
+                    <a href="#">
+                        <i class="fas fa-home"></i>
+                    </a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a href="#">Tables</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">Tables</li>
+            </ol>
+        </nav>
+    </div>
+}

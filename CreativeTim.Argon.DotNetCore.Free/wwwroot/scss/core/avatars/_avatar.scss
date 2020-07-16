@@ -11,14 +11,20 @@
 	align-items: center;
 	justify-content: center;
 	font-size: 1rem;
-	border-radius: 50%;
+	border-radius: $border-radius;
 	height: 48px;
 	width: 48px;
 
     img {
     	width: 100%;
-    	border-radius: 50%;
+    	border-radius: $border-radius;
     }
+
+	&.rounded-circle {
+		img {
+			@extend .rounded-circle;
+		}
+	}
 
     + .avatar-content {
     	display: inline-block;
@@ -28,6 +34,11 @@
 
 
 // Avatar size variations
+
+.avatar-xl {
+	width: 74px;
+	height: 74px;
+}
 
 .avatar-lg {
 	width: 58px;
@@ -39,4 +50,10 @@
 	width: 36px;
 	height: 36px;
 	font-size: $font-size-sm;
+}
+
+.avatar-xs {
+	width: 24px;
+	height: 24px;
+	font-size: $font-size-xs;
 }
